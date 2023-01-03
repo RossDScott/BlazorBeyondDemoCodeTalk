@@ -26,5 +26,11 @@
     private void onTimerElapsed(object? sender, ElapsedEventArgs e)
     {
         timeRemaining = startTime!.Value.Subtract(DateTime.UtcNow).Add(startDuration);
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        timer.Elapsed -= onTimerElapsed;
     }
 }
