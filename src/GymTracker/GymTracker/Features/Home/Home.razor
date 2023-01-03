@@ -1,7 +1,11 @@
 ﻿@page "/"
+@inject NavigationManager NavigationManager
+
 
 <h1>Gym Tracker</h1>
 
-@code {
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="handleStartSession">Start Session</MudButton>
 
+@code {
+    private void handleStartSession() => NavigationManager.NavigateTo("Session");
 }
