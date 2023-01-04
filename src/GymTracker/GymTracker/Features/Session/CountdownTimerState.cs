@@ -14,6 +14,7 @@ public class CountdownTimerState
     public CountdownTimerState()
     {
         timer.Elapsed += Timer_Elapsed;
+        TimeRemaining = startDuration;
     }
 
     private void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)

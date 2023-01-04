@@ -1,36 +1,22 @@
 ﻿@using System.Timers
 
+@inject CountdownTimerState timerState
+
 <h4>CountdownTimer</h4>
-<h2>@timeRemaining.ToString(@"mm\:ss\:fff")</h2>
+<h2>@timerState.TimeRemaining.ToString(@"mm\:ss\:fff")</h2>
 <MudButton Variant="Variant.Filled" Size="Size.Small" OnClick="handleStart">Start</MudButton>
 
 @code {
-    TimeSpan timeRemaining = new();
-    TimeSpan startDuration = new TimeSpan(0, 0, 3);
-    Timer timer = new Timer(1);
-
     protected override void OnInitialized()
     {
-        timeRemaining = startDuration;
-        timer.Elapsed += onTimerElapsed;
+        timerState.OnStateChange += StateHasChanged;
         base.OnInitialized();
     }
 
-    DateTime? startTime = null;
-    private void handleStart()
-    {
-        startTime = DateTime.UtcNow;
-        timer.Start();
-    }
-
-    private void onTimerElapsed(object? sender, ElapsedEventArgs e)
-    {
-        timeRemaining = startTime!.Value.Subtract(DateTime.UtcNow).Add(startDuration);
-        StateHasChanged();
-    }
+    private void handleStart() => timerState.StartTimer();
 
     public void Dispose()
     {
-        timer.Elapsed -= onTimerElapsed;
+        timerState.OnStateChange -= StateHasChanged;
     }
 }
