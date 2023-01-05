@@ -1,4 +1,4 @@
-﻿@inject CountdownTimerState timerState
+﻿
 
 <div class="d-flex">
     <div class="container-fluid">
@@ -41,7 +41,7 @@
     private void handleToggleComplete()
     {
         completed = !completed;
-        timerState.StartTimer(new TimeSpan(0, 2, 30));
+        
     }
 
 }
