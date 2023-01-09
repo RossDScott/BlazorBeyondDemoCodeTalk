@@ -1,8 +1,12 @@
 ﻿@using System.Timers
+@using GymTracker.Features.Session.CountdownTimer.Store;
+@inherits FluxorComponent
 
+@inject IDispatcher Dispatcher
+@inject IState<CountdownTimerState> State
 
 <h4>CountdownTimer</h4>
-<h2></h2>
+<h2>@State.Value.Duration.ToString(@"mm\:ss\:fff")</h2>
 <MudButton Variant="Variant.Filled" Size="Size.Small" OnClick="handleStart">Start</MudButton>
 
 @code {
