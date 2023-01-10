@@ -1,0 +1,10 @@
+﻿@code {
+    public static RenderFragment<(string name, TimeSpan duration)> TimerFace = state => 
+        @<div>
+            <h4>@state.name</h4>
+            <h2>
+                @state.duration.ToString(@"mm\:ss\:fff")
+            </h2>
+        </div>;
+ 
+}

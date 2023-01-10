@@ -5,15 +5,11 @@
 @inject IState<CountdownTimerState> State
 @inject IDispatcher Dispatcher
 
-<h4>CountdownTimer</h4>
-@State.Value.StartTime == null ? startTimerFace : countingDownFace;
+@TimerFragments.TimerFace((name: "Countdown", duration: State.Value.StartTime == null ? State.Value.StartDuration : State.Value.Duration ))
 
 <MudButton Variant="Variant.Filled" Size="Size.Small" OnClick="handleStart">Start</MudButton>
 
 @code {
-    RenderFragment countingDownFace => @<h2>@State.Value.Duration.ToString(@"mm\:ss\:fff")</h2>;
-    RenderFragment startTimerFace => @<h2>@State.Value.StartDuration.ToString(@"mm\:ss\:fff")</h2>;
-
     private void handleStart()
     {
         Dispatcher.Dispatch(new CountdownTimerStartAction(DateTime.UtcNow));
