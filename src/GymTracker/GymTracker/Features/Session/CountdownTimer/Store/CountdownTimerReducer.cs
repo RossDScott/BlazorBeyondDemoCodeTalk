@@ -24,7 +24,7 @@ public static class CountdownTimerReducer
     }
 
     [ReducerMethod]
-    public static CountdownTimerState OnSetDuration(CountdownTimerState state, CountdownTimerSetDuration action)
+    public static CountdownTimerState OnSetDuration(CountdownTimerState state, CountdownTimerSetDurationAction action)
     {
         return state with
         {
