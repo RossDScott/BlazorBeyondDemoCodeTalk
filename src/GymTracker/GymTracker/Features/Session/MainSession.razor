@@ -1,5 +1,5 @@
 ﻿@using GymTracker.Features.Session.CountdownTimer.Store;
-@inject IDispatcher Dispatcher
+
 
 <div class="d-flex">
     <div class="container-fluid">
@@ -42,6 +42,6 @@
     void handleToggleComplete()
     {
         completed = !completed;
-        Dispatcher.Dispatch(new CountdownTimerStartWithDurationAction(DateTime.UtcNow, TimeSpan.FromSeconds(120)));
+        
     }
 }
